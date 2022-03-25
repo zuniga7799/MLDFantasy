@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+
+
+* {
+  font-family: 'Sora', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.team-name{
+  margin:0 25px;
+}
+
+.team-info{
+  padding-left: 50px;
+  padding-top: 50px;
+  display:flex;
+}
