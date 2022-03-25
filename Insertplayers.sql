@@ -34,7 +34,7 @@ insert into dbo.Players values
 ('Jonathan Schoop',	'1B',	30,		9,	2024,	347.5,	2.24,	'DET',	'SMYT',	'1B,2B',	'Res'),
 ('Jean Segura',	'2B',	32,		4,	2024,	372,	2.7,	'PHI',	'SMYT',	'2B',	'Res'),
 ('Justin Turner',	'3B',	37,		7,	2026,	361.75,	2.7,	'LAD',	'SMYT',	'3B',	'Res'),
-('Joey Wendle',	'SS',	31,		4,	2024,	282.75,	2.11,	'MIA',	'SMYT'	'3B,SS',	'Res'),
+('Joey Wendle',	'SS',	31,		4,	2024,	282.75,	2.11,	'MIA',	'SMYT',	'3B,SS',	'Res'),
 ('Jorge Soler',	'RF',	30,		8,	2024,	342.5,	2.36,	'MIA',	'SMYT',	'RF',	'Res'),
 ('Hunter Dozier',	'RF',	30,		1,	2021,	246.5,	1.87,	'KC',	'SMYT',	'3B,RF',	'Res'),
 ('Eloy Jimenez',	'UT',	25,		20,	2026,	369,	2.46,	'CHW',	'SMYT',	'LF',	'Res'),
