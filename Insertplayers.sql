@@ -1,4 +1,4 @@
-Create table dbo.Players(
+Create or alter table dbo.Players(
 	PlayerId int identity(1,1),
 	PlayerName nvarchar(35),
 	Position nvarchar(2),
@@ -13,9 +13,6 @@ Create table dbo.Players(
 	[Status]  nvarchar (35)
 )
 
-
-select * 
-from dbo.Players
 
 insert into dbo.Players values
 ('Salvador Perez',	'C',	31,		6,	2026,	351.75,	2.46,	'KC',	'SMYT',	'C',	'Act'),
@@ -56,4 +53,47 @@ insert into dbo.Players values
 ('Kevin Alcantara',	'CF',	19,		1,	2050,	0,	0,	'CHC',	'SMYT',	'CF,RF',	'Min'),
 ('Jairo Pomares',	'RF',	21,		1,	2050,	0,	0,	'SF',	'SMYT',	'RF',	'Min'),
 ('Seth Beer',	'UT',	25,		1,	2027,	101.5,	2.21,	'ARI',	'SMYT',	'UT',	'Min')
+
+Create or alter table dbo.Owners(
+	OwnerId int identity(1,1),
+	FirstName nvarchar (35) not null,
+	LastName nvarchar (35) not null
+)
+
+insert into dbo.Owners values
+('Mikey', 'Zuniga'),
+('Jonathan', 'Wade'),
+('Austin', 'Michals'),
+('Tyler', 'Graham'),
+('Sonny', 'Villani'),
+('Zach', 'Graham'),
+('Bails', 'James'),
+('Cory', 'Ott'),
+
+
+
+Create or alter table dbo.Teams(
+	TeamId int identity(1,1),
+	TeamName nvarchar(35) not null,
+	Salary int not null,
+	[OwnerId] nvarchar (35) not null,
+	Wins int,
+	Losses int,
+	Abbreviation, nvarchar(4)
+)
+
+insert into dbo.Teams values
+('Show Me Ya Tatis', 370, 1, 0, 0, 'SMYT'),
+('Acuna Matata', 384, 2, 0, 0, 'WADE'),
+('Billy Beane', 357, 3, 0, 0, 'BEAN'),
+('Bryce Krispie Treats', 310, 4, 0, 0, 'HARP'),
+('Dustin Harris Hype Train', 273, 5, 0, 0, 'DUST'),
+('Eggs Odorizzi', 370, 6, 0, 0, 'ZACH'),
+('Georgia Peaches', 333, 7, 0, 0, 'BAIL'),
+('High Cheeze', 334, 8, 0, 0, 'CORY'),
+('Jack of All Trades', 402, 9, 0, 0, 'Jack'),
+('Kiriloff Szn', 294, 10, 0, 0, 'TREV'),
+('Nazty Boys', 298, 11, 0, 0, 'BOB'),
+('Grim Reiver'), 295, 12, 0, 0, 'JP')
+
 

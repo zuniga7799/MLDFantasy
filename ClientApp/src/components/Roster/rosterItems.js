@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Table } from 'react-bootstrap'
 
 export class RosterItem extends Component {
-    
+    _isMounted = false;
     constructor(props) {
         super(props);
         this.state = { players: [] }
@@ -24,20 +24,28 @@ export class RosterItem extends Component {
         fetch(process.env.REACT_APP_API + 'player')
             .then(response => response.json())
             .then(data => {
-                this.setState({ players: data });
+                if (this._isMounted) {
+                    this.setState({
+                        players: data,
+                    });
+                } 
             });
     }
 
     componentDidMount() {
+        this._isMounted = true;
         this.refreshList();
     }
 
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
     componentDidUpdate() {
-        this.refreshList();
+        //this.refreshList();
     }
 
     render() {
-        let  players  = this.state || this.dummyData;
+        let { players }  = this.state || this.dummyData;
         
         return (
             <div>
@@ -45,10 +53,15 @@ export class RosterItem extends Component {
                     <thead>
                         <tr>
                             <th>PlayerName</th>
+                            <th>Team</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>{players.PlayerName}</tr>
+                        {players.map(player =>
+                            <tr key={player.PlayerId}>
+                                <td>{player.PlayerName}</td>
+                                <td>{player.Team}</td>
+                            </tr>)}
                     </tbody>
                 </Table>
         </div>

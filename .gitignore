@@ -1,2 +1,6 @@
 
 *.cache
+MLDWebApi/.vs/MLDWebApi/v16/.suo
+MLDWebApi/.vs/MLDWebApi/DesignTimeBuild/.dtbcache.v2
+ClientApp/package-lock.json
+ClientApp/package.json
