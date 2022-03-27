@@ -28,7 +28,7 @@ namespace MLDWebApi.Controllers
       string query = @"
                 select * from dbo.Players";
       DataTable table = new DataTable();
-      string sqlDataSource = _configuration.GetConnectionString("PlayersAppCon");
+      string sqlDataSource = _configuration.GetConnectionString("MLDAppCon");
       SqlDataReader myReader;
       using(SqlConnection myCon=new SqlConnection(sqlDataSource))
       {

@@ -18,3 +18,22 @@
   display:flex;
 }
 
+.dropdown-menu{
+  margin-top:27px;
+}
+
+.teams-dropdown{
+  width: 50px;
+}
+.teams-dropdown a{
+  color: #fff;
+  background: #000;
+  text-decoration: none;
+  display: flex;
+  padding: 0 1rem;
+  text-align: left;
+  line-height: 1.25rem;
+}
+.teams-dropdown a:hover{
+  color: #758FCE;
+}

@@ -4,3 +4,7 @@ MLDWebApi/.vs/MLDWebApi/v16/.suo
 MLDWebApi/.vs/MLDWebApi/DesignTimeBuild/.dtbcache.v2
 ClientApp/package-lock.json
 ClientApp/package.json
+MLDWebApi/MLDWebApi/obj/Debug/netcoreapp3.1/MLDWebApi.pdb
+MLDWebApi/MLDWebApi/obj/Debug/netcoreapp3.1/MLDWebApi.csproj.CoreCompileInputs.cache
+MLDWebApi/MLDWebApi/obj/Debug/netcoreapp3.1/MLDWebApi.dll
+MLDWebApi/MLDWebApi/obj/Debug/netcoreapp3.1/MLDWebApi.csproj.AssemblyReference.cache

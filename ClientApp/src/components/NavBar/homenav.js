@@ -1,18 +1,32 @@
 import React, {Component, useState, setState} from 'react';
 import { NavDropdown, Navbar, NavItem} from 'react-bootstrap';
 import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink } from './NavBarElements'
-import Dropdown from '../Dropdown';
 
 export class HomeNav extends Component{
+  _isMounted = false;
+
   constructor(props) {
     super(props);
     this.state = {
       showDropdown: true,
-      menutItemsDisplay: 'none'
+      menutItemsDisplay: 'none',
+      teams: []
     }
 
     this.setShow = this.setShow.bind(this);
   }
+
+  refreshList() {
+    fetch(process.env.REACT_APP_API + 'team')
+        .then(response => response.json())
+        .then(data => {
+            if (this._isMounted) {
+                this.setState({
+                    teams: data,
+                });
+            } 
+        });
+}
 
   setShow(){
     this.setState({
@@ -30,14 +44,23 @@ export class HomeNav extends Component{
         menutItemsDisplay: 'none'
       }); 
     }
-    window.console.log("show:" + this.state.showDropdown);
+  }
+
+  goToTeam(e) {
+    window.console.log(e.target)
   }
 
   componentDidMount() {
-    
+        this._isMounted = true;
+        this.refreshList();
+    }
+
+  componentWillUnmount() {
+      this._isMounted = false;
   }
 
   render() {
+    let { teams } = this.state;
     return (
       <>
         <Nav>
@@ -58,16 +81,21 @@ export class HomeNav extends Component{
             <NavLink to="/scoreboard" activestyle="true">
               Scoreboard
             </NavLink>
-            <NavItem>
             <NavDropdown
               title="Teams"
-              id="collasible-nav-dropdown"
-                onClick={this.setShow}
-                show={this.state.showDropdown}
+              onClick={this.setShow}
+              show={this.state.showDropdown}
+              className="teams-dropdown"
             >
-                <NavDropdown.Item style={{ display:this.state.menutItemsDisplay }}>Team 1</NavDropdown.Item>
+                {teams.map(team =>
+                  <NavDropdown.Item
+                    href={"/teams/teamid=" + team.TeamId }
+                    key={team.TeamId}
+                    style={{ display: this.state.menutItemsDisplay }}
+                    onClick={this.goToTeam}
+                  >{team.TeamName}
+                  </NavDropdown.Item>)}
             </NavDropdown>
-            </NavItem>
             
           </NavMenu>
           <NavBtn>
