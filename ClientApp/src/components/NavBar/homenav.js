@@ -1,6 +1,7 @@
 import React, {Component, useState, setState} from 'react';
 import { NavDropdown, Navbar, NavItem} from 'react-bootstrap';
 import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink } from './NavBarElements'
+import Team   from '../../pages/team.js'
 
 export class HomeNav extends Component{
   _isMounted = false;
@@ -47,7 +48,7 @@ export class HomeNav extends Component{
   }
 
   goToTeam(e) {
-    window.console.log(e.target)
+    
   }
 
   componentDidMount() {
@@ -89,7 +90,8 @@ export class HomeNav extends Component{
             >
                 {teams.map(team =>
                   <NavDropdown.Item
-                    href={"/teams/teamid=" + team.TeamId }
+                    href={"/team/" + team.TeamId}
+                    element={<Team/>}
                     key={team.TeamId}
                     style={{ display: this.state.menutItemsDisplay }}
                     onClick={this.goToTeam}

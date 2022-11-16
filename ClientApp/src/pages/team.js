@@ -1,19 +1,14 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Table } from 'react-bootstrap'
+import { Roster } from '../components/Roster/roster';
 import { useParams } from 'react-router-dom';
-import { Team } from '../../pages/team.js';
 
-function withParams(Component) {
-    return props => <Component {...props} params={useParams()} />;
-}
-export class RosterItem extends Component {
+class Team extends Component {
     _isMounted = false;
-    
-   
 
     constructor(props) {
         super(props);
-        this.state = { players: [], teamId: id}
+        this.state = { players: [], teamId: 1}
         
         this.dummyData = {
             PlayerId: 1,
@@ -30,8 +25,7 @@ export class RosterItem extends Component {
 
 
     refreshList() {
-        let teamId = this.state.teamId
-        fetch(process.env.REACT_APP_API + 'team/' + teamId)
+        fetch(process.env.REACT_APP_API + 'team/' + this.state.teamId)
             .then(response => response.json())
             .then(data => {
                 if (this._isMounted) {
@@ -44,10 +38,12 @@ export class RosterItem extends Component {
 
     componentDidMount() {
         this._isMounted = true;
-        this.refreshList();
+        const { id } = this.props.params;
+        this.setState({
+            teamId: id
+        })
 
-        let { id } = this.props.params;
-        this.state.teamId = id;
+        this.refreshList();
     }
 
     componentWillUnmount() {
@@ -59,8 +55,10 @@ export class RosterItem extends Component {
 
     render() {
         let { players }  = this.state || this.dummyData;
-        
+        const { id } = this.props.match.params;
         return (
+            <>
+                <div>{id}</div>
             <div>
                 <Table className="mt-4" striped bordered hover size="sm">
                     <thead>
@@ -77,8 +75,43 @@ export class RosterItem extends Component {
                             </tr>)}
                     </tbody>
                 </Table>
-        </div>
+            </div>
+            </>
     );
     }
 }
-export default withParams(RosterItem);
+export default Team;
+    /*_isMounted = false;
+    constructor(props) {
+        super(props);
+        this.state = {
+        }
+
+    }
+        render() {
+        
+            return (
+                <>
+                    <div className="team-info">
+                        <div className="team-name">My Team Name</div>
+                        <div className="team-record">0-0 First in Division</div>
+                    </div>
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            height: '90vh',
+                            border: 'solid',
+                            borderRadius: '10rem',
+                            margin: '50px'
+                        }}
+                    >
+                        <Roster />
+                    </div>
+                </>
+            )
+    }*/
+    
+
+
